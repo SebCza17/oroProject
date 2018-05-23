@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
-public class FillDrinkDatabase {
+public class FillDrinkDatabase extends RandValue {
     private String[] drinkName = {"Coca-Cola", "Pepsi", "Mirinda", "Sprite", "Cisowianka", "Capi", "Tymbark", "Lipton", "Minutka", "Earl Grey",
             "Czarna", "Gorąca Czekolada", "Espresso", "Cappuccino", "Tyskie", "Warka", "Harnaś", "Miodne", "Rżnięte", "Koźlak",
     "Pan Tadeusz", "Sierra", "Cymes", "Krajowa"};
@@ -14,21 +14,6 @@ public class FillDrinkDatabase {
     private String[] drinkDescription = {"Opcja w temp. Pokojowej", "Opcja Zimna", "Opcja Ciepła"};
 
     private Double[] drinkSize = {0.25, 0.33, 0.5, 0.75, 1.0, 1.5, 2.0};
-
-    private Integer randInt(int min, int max){
-        Random random = new Random();
-        return random.nextInt(max + 1 - min) + min;
-    }
-
-    private Double randDouble(int min, int max){
-        Random random = new Random();
-        double roundOff = Math.round(min + (max - min) * random.nextDouble() * 100.0) / 100.0;
-        return roundOff;
-    }
-
-    private Boolean randBoolean(float a){
-        return Math.random() < a;
-    }
 
     private DescriptionEntity randDrinkDescription(){
         StringBuilder desc = new StringBuilder();

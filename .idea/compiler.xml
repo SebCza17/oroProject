@@ -6,10 +6,12 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
+        <module name="oroProject" />
         <module name="untitled5" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
+      <module name="oroProject" target="1.7" />
       <module name="untitled5" target="1.7" />
     </bytecodeTargetLevel>
   </component>

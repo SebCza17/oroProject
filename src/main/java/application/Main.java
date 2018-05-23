@@ -1,8 +1,14 @@
 package application;
 
-import application.model.EntityCore;
-import application.model.FillDishDatabase;
-import application.model.FillDrinkDatabase;
+import application.model.*;
+import entities.DishEntity;
+import entities.OrderEntity;
+
+import javax.persistence.Query;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
+
 
 public class Main {
 
@@ -91,6 +97,26 @@ public class Main {
 //        }
 //        FillDrinkDatabase fillDrinkDatabase = new FillDrinkDatabase();
 //        fillDrinkDatabase.randDrink();
+
+
+//        EntityCore entityCore = new EntityCore();
+//        Query query =  entityCore.getEntityManager().createQuery("from DishEntity");
+//        List<DishEntity> dishEntities = query.getResultList();
+//
+//        for(int i = 0; i < dishEntities.size() - 1; i++)
+//            System.out.println(dishEntities.get(i).getId());
+
+//
+//        OrderEntity orderEntity = new OrderEntity();
+//        EntityCore entityCore = new EntityCore();
+//        orderEntity.setStartDatetime(new Date());
+//        entityCore.start();
+//       // entityCore.getEntityManager().persist(orderEntity);
+//        entityCore.end();
+
+        FillOrderDatabase fillOrderDatabase = new FillOrderDatabase();
+        fillOrderDatabase.makeOrder(600);
+
 
 
     }

@@ -10,7 +10,7 @@ import java.util.Random;
 
 
 
-public class FillDishDatabase {
+public class FillDishDatabase extends RandValue {
 
     private String[] dishName = {"Margerita", "Prosciutto", "Prataiolo", "Salame", "Cacciatore", "Spinace", "Capri", "Giulia", "Romeo", "Verona",
             "Romana", "Livorno", "Novara", "Capricciosa", "Cosa nostra", "Vegetariana", "Vegetariana", "Etiva", "Serowa", "Pollo",
@@ -22,20 +22,6 @@ public class FillDishDatabase {
 
     private Double[] dishSize = {26.0, 35.0, 42.0, 55.0};
 
-    private Integer randInt(int min, int max){
-        Random random = new Random();
-        return random.nextInt(max + 1 - min) + min;
-    }
-
-    private Double randDouble(int min, int max){
-        Random random = new Random();
-        double roundOff = Math.round(min + (max - min) * random.nextDouble() * 100.0) / 100.0;
-        return roundOff;
-    }
-
-    private Boolean randBoolean(){
-        return Math.random() < 0.8;
-    }
 
     private DescriptionEntity randDishDescription(){
         StringBuilder desc = new StringBuilder();
@@ -68,7 +54,7 @@ public class FillDishDatabase {
 
         for (Double aDishSize : dishSize) {
             DishDetailsEntity dishDetailsEntity = new DishDetailsEntity();
-            dishDetailsEntity.setAvailability(randBoolean());
+            dishDetailsEntity.setAvailability(randBoolean(0.8f));
             dishDetailsEntity.setPrice(randDouble(16, 35));
             dishDetailsEntity.setSizes(aDishSize);
             dishDetailsEntity.setTax(8.0);

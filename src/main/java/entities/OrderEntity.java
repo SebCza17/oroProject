@@ -1,7 +1,9 @@
 package entities;
 
 import javax.persistence.*;
-import java.sql.Date;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 import java.util.Objects;
 
