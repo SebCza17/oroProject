@@ -18,6 +18,21 @@ public class EntityCore {
         }
     }
 
+    public void commit(){
+        entityManager.getTransaction().commit();
+    }
+
+    public void start(){
+        entityManager.getTransaction().begin();
+    }
+
+
+    public void end(){
+        entityManager.close();
+        entityManagerFactory.close();
+    }
+
+
     public EntityManager getEntityManager() {
         return entityManager;
     }
