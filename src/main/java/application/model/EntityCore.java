@@ -28,6 +28,7 @@ public class EntityCore {
 
 
     public void end(){
+        entityManager.getTransaction().commit();
         entityManager.close();
         entityManagerFactory.close();
     }

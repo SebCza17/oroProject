@@ -10,7 +10,7 @@ import java.util.Random;
 
 
 
-public class FillDatabase {
+public class FillDishDatabase {
 
     private String[] dishName = {"Margerita", "Prosciutto", "Prataiolo", "Salame", "Cacciatore", "Spinace", "Capri", "Giulia", "Romeo", "Verona",
             "Romana", "Livorno", "Novara", "Capricciosa", "Cosa nostra", "Vegetariana", "Vegetariana", "Etiva", "Serowa", "Pollo",
@@ -56,7 +56,7 @@ public class FillDatabase {
         entityCore.start();
 
         entityCore.getEntityManager().persist(descriptionEntity);
-        entityCore.commit();
+
         entityCore.end();
 
 
@@ -83,7 +83,6 @@ public class FillDatabase {
     }
 
     public void randDish(){
-        DescriptionEntity descriptionEntity = new DescriptionEntity();
         EntityCore entityCore = new EntityCore();
 
         entityCore.start();
@@ -98,7 +97,7 @@ public class FillDatabase {
             randDishDetails(dishEntity, entityCore);
 
         }
-        entityCore.commit();
+
         entityCore.end();
     }
 }

@@ -1,17 +1,8 @@
 package application;
 
 import application.model.EntityCore;
-import application.model.FillDatabase;
-import entities.DescriptionEntity;
-import entities.DishDetailsEntity;
-import entities.DishEntity;
-import entities.OrderEntity;
-
-import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.Persistence;
-import java.text.DecimalFormat;
-import java.util.*;
+import application.model.FillDishDatabase;
+import application.model.FillDrinkDatabase;
 
 public class Main {
 
@@ -67,8 +58,9 @@ public class Main {
 //
 //        entityManager.getTransaction().commit();
 //
-        FillDatabase fillDatabase = new FillDatabase();
-        fillDatabase.randDish();
+
+//        FillDishDatabase fillDishDatabase = new FillDishDatabase();
+//        fillDishDatabase.randDish();
 
 //
 //
@@ -92,12 +84,13 @@ public class Main {
 //        EntityCore entityCore = new EntityCore();
 //        entityCore.start();
 //        entityCore.end();
-//
+
 //        for(int i = 0; i < 20; i ++) {
 //
 //            System.out.println(randDouble(16,35));
 //        }
-
+//        FillDrinkDatabase fillDrinkDatabase = new FillDrinkDatabase();
+//        fillDrinkDatabase.randDrink();
 
 
     }

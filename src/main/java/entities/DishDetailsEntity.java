@@ -40,7 +40,7 @@ public class DishDetailsEntity {
 
     public void setSizes(Double sizes) { this.sizes = sizes; }
 
-    @ManyToOne()
+    @ManyToOne
     @JoinColumn(name = "id_dish")
     public DishEntity getDishEntity() { return dishEntity; }
 
