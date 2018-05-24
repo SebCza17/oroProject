@@ -1,20 +1,68 @@
 package application;
 
-import application.model.*;
-import entities.DishEntity;
+
+
+import application.model.EntityCore;
+import application.model.FillDishDatabase;
+import application.model.FillDrinkDatabase;
+import application.model.FillOrderDatabase;
+import entities.DescriptionEntity;
 import entities.OrderEntity;
 
 import javax.persistence.Query;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.Scanner;
 
 
 public class Main {
 
-    public static void main(String[] args) {
+    static Scanner odczyt = new Scanner(System.in);
 
+    public static void main(String[] args)  {
 
+        int which = 0;
+
+        while(which != 9){
+            switch (which){
+                case 0:
+                    showMenu();
+                    break;
+                case 1:
+                    FillDishDatabase fillDishDatabase = new FillDishDatabase();
+                    fillDishDatabase.randDish();
+                    break;
+                case 2:
+                    FillDrinkDatabase fillDrinkDatabase = new FillDrinkDatabase();
+                    fillDrinkDatabase.randDrink();
+                    showMenu();
+                    break;
+                case 3:
+                    FillOrderDatabase fillOrderDatabase = new FillOrderDatabase();
+                    System.out.println("\nPodaj ile chcesz wprowadzic zamowien");
+                    int n = odczyt.nextInt();
+                    fillOrderDatabase.makeOrder(n);
+                    showMenu();
+                    break;
+                case 4:
+                    selectOrder();
+                    showMenu();
+                    break;
+                case 5:
+                    selectOrderWhere();
+                    showMenu();
+                    break;
+                case 6:
+                    EntityCore entityCore = new EntityCore();
+                    entityCore.start();
+                    entityCore.end();
+                    break;
+                default:
+                    break;
+            }
+            which = odczyt.nextInt();
+        }
 
 //
 //        DishDetailsEntity dishDetailsEntity = new DishDetailsEntity();
@@ -113,13 +161,60 @@ public class Main {
 //        entityCore.start();
 //       // entityCore.getEntityManager().persist(orderEntity);
 //        entityCore.end();
-
-        FillOrderDatabase fillOrderDatabase = new FillOrderDatabase();
-        fillOrderDatabase.makeOrder(600);
-
-
-
     }
+
+    private static void showMenu(){
+        System.out.println("Menu: ");
+        System.out.println("0 - Menu: ");
+        System.out.println("1 - Wypełnij baze daniami");
+        System.out.println("2 - Wypełnij baze napojami");
+        System.out.println("3 - Wypełnij baze zamówieniami");
+        System.out.println("4 - Select All from Order");
+        System.out.println("5 - Select WHERE from Order");
+        System.out.println("9 - Zakończ Program");
+        System.out.print("\n\nPodaj Cyfre: ");
+    }
+
+    private static void selectOrder(){
+        EntityCore entityCore = new EntityCore();
+        Query query = entityCore.getEntityManager().createQuery("from OrderEntity ");
+        List<OrderEntity> orderEntities = query.getResultList();
+
+        entityCore.start();
+        int i = 0;
+        while(i < orderEntities.size() - 1) {
+        int j = i + 10;
+            for (; i < j && i < orderEntities.size() - 1; i++) {
+                System.out.println(orderEntities.get(i).toString());
+            }
+            System.out.println("1 - dalej");
+            if (odczyt.nextInt() != 1) i = orderEntities.size();
+
+
+
+        }
+        entityCore.end();
+    }
+
+    private static void selectOrderWhere(){
+        EntityCore entityCore = new EntityCore();
+        entityCore.start();
+
+        System.out.println("Podaj id referencji do pobrania");
+        int idx = odczyt.nextInt();
+        OrderEntity orderEntity = entityCore.getEntityManager().getReference(OrderEntity.class,idx);
+        System.out.println(orderEntity.toString());
+        System.out.println(orderEntity.getDescriptionEntity().getDescription());
+        for(int i = 0; i < orderEntity.getDishEntities().size() - 1; i++)
+            System.out.print(", "+ orderEntity.getDishEntities().get(i).getName());
+
+        System.out.println("\n\n");
+        for(int i = 0; i < orderEntity.getDrinkEntities().size() - 1; i++)
+            System.out.print(", "+ orderEntity.getDrinkEntities().get(i).getName());
+
+        entityCore.end();
+    }
+
 //
 //    private static Double randDouble(int min, int max){
 //        Random random = new Random();

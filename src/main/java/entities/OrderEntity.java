@@ -20,6 +20,8 @@ public class OrderEntity {
     private List<DishEntity> dishEntities;
     private List<DrinkEntity> drinkEntities;
 
+    public OrderEntity() {
+    }
 
     @Id
     @Column(name = "id")
@@ -88,4 +90,14 @@ public class OrderEntity {
 
     public void setDrinkEntities(List<DrinkEntity> drinkEntities) { this.drinkEntities = drinkEntities; }
 
+    @Override
+    public String toString() {
+        return "OrderEntity{" +
+                "id=" + id +
+                ", status=" + status +
+                ", kind=" + kind +
+                ", startDatetime=" + startDatetime +
+                ", endDatetime=" + endDatetime +
+                '}';
+    }
 }

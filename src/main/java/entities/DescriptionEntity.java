@@ -10,6 +10,9 @@ public class DescriptionEntity {
     private int id;
     private String description;
 
+    public DescriptionEntity() {
+    }
+
     @Id
     @Column(name = "id")
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -29,5 +32,13 @@ public class DescriptionEntity {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    @Override
+    public String toString() {
+        return "DescriptionEntity{" +
+                "id=" + id +
+                ", description='" + description + '\'' +
+                '}';
     }
 }

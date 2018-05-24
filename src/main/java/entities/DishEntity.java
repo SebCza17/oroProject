@@ -16,6 +16,8 @@ public class DishEntity {
     private List<DishDetailsEntity> dishDetailsEntities;
     private List<OrderEntity> orderEntities;
 
+    public DishEntity() {
+    }
 
     @Id
     @Column(name = "id")

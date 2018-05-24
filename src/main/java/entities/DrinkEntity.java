@@ -16,6 +16,9 @@ public class DrinkEntity {
     private List<DrinkDetailsEntity> drinkDetailsEntity;
     private List<OrderEntity> orderEntities;
 
+    public DrinkEntity() {
+    }
+
     @Id
     @Column(name = "id")
     @GeneratedValue(strategy = GenerationType.AUTO)

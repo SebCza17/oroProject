@@ -13,6 +13,9 @@ public class DishDetailsEntity {
     private Double sizes;
     private DishEntity dishEntity;
 
+    public DishDetailsEntity() {
+    }
+
     @Id
     @Column(name = "id")
     @GeneratedValue(strategy = GenerationType.AUTO)
